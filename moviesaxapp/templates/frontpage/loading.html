@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% static "" as baseUrl %}
+
+{% block content %}
+    <div id="loading">
+
+        <h2> Getting movie from IPFS/FileCoin network. Please wait for us preparing ....<br/></h2>
+        <h3>Loading<br/></h3>
+        <div class="lds-heart">
+            <div></div>
+        </div>
+        <div id="countdown">
+            <h3> The movie will probably begin in <span id="countdowntimer">10 </span> Seconds</h3>
+        </div>
+    </div>
+
+    <p><input type="button" value="Refresh" onClick="refresh(this)"></p>
+
+    <script>
+        setTimeout(function () {
+            if (window.location.hash != '#r') {
+                window.location.hash = 'r';
+                window.location.reload(1);
+                const x = document.getElementById("countdown");
+                x.style.display = "none";
+            }
+        }, 10000);
+    </script>
+
+
+    <script type="text/javascript">
+        var timeleft = 10;
+        var downloadTimer = setInterval(function () {
+            timeleft--;
+            document.getElementById("countdowntimer").textContent = timeleft;
+            if (timeleft <= 0)
+                clearInterval(downloadTimer);
+        }, 1000);
+    </script>
+    <script>
+        function refresh() {
+            window.location.reload("Refresh")
+        }
+    </script>
+{% endblock %}

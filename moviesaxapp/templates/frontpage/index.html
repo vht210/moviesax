@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div id="example-table" style="width:1080px;"> ></div>
+
+    <script>
+
+
+        var table = new Tabulator("#example-table", {
+            ajaxURL: "/videocid",
+
+            layout: "fitColumns",      //fit columns to width of table
+            responsiveLayout: "hide",  //hide columns that dont fit on the table
+            tooltips: true,            //show tool tips on cells
+            addRowPos: "top",          //when adding a new row, add it to the top of the table
+            history: true,             //allow undo and redo actions on the table
+            pagination: "local",       //paginate the data
+            paginationSize: 50,         //allow 7 rows per page of data
+            movableColumns: true,      //allow column order to be changed
+            resizableRows: true,       //allow row order to be changed
+            initialSort: [             //set the initial sort order of the data
+                {column: "name", dir: "asc"},
+            ],
+            columns: [                 //define the table columns
+                {title: "Count", field: "count", editor: "input", width: 35},
+                {title: "Movie Name", field: "movie_name", width: 310, hozAlign: "left"},
+                {
+                    title: "Movie File",
+                    field: "file_name",
+                    width: 305,
+                    hozAlign: "left",
+                    formatter: "link",
+                    formatterParams:{
+                        url:function (cell) {
+                            return "/video/" + cell.getData().cid +"/" + cell.getData().file_name;
+                        }
+                    }
+                },
+                {title: "CID", field: "cid", width: 420, hozAlign: "left", formatter: customFormatter},
+
+            ],
+        });
+
+        function customFormatter(cell, formatterParams, onRendered) {
+            const val = cell.getValue();
+            const cellDiv = document.createElement('div');
+            for (let i = 0; i < val.length; i++) {
+                const valItemDiv = document.createElement('div');
+                valItemDiv.textContent = val[i];
+                //valItemDiv.style.border = 'purple 1px solid';
+                cellDiv.appendChild(valItemDiv);
+            }
+            return cellDiv;
+        }
+
+
+    </script>
+{% endblock %}

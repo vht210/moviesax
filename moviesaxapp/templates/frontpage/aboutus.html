@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <h3> About  </h3>
+    <table class="table">
+    <tbody>
+    <tr>
+        <td>
+        <img src="{% static 'images/aboutus1.jpeg' %}" class="img-rounded" alt="aboutus" width="400" height="300">
+        </td>
+        <td><br/><br/><br/>
+            All movies are public domain movies which also available at https://archive.org/details/publicmovies212
+        </td>
+
+    </tr>
+    </tbody>
+    </table>
+
+
+
+<script>
+   $(document).ready(function () {
+  $(".nav li").removeClass("active");//this will remove the active class from
+                                     //previously active menu item
+  $('#aboutus').addClass('active');
+});
+   </script>
+
+{% endblock %}

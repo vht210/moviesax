@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+*.log
+moviesaxapp/static/video/
+.idea
+settings.py
+config.py
+moviesax.db
