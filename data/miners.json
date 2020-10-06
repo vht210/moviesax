@@ -1,0 +1,11 @@
+{
+  "buckets": [
+    {
+      "name": "Europe",
+      "amount": 1,
+      "minerAddresses": [
+        "t01277"
+      ]
+    }
+  ]
+}
