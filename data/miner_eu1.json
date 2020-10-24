@@ -3,14 +3,8 @@
     {
       "name": "Europe",
       "amount": 1,
-      "minerAddresses": [
-        "t08285",
-        "t022352",
-        "t02576",
-        "t08403",
-        "t016594",
-        "t03362",
-        "t02388"
+      "minerAddresses": [       
+        "f01291"
       ]
     }
   ]
